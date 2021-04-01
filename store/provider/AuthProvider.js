@@ -11,15 +11,22 @@ class AuthProvider extends React.Component{
     };
     
     componentDidMount=async () =>{
+        // await AsyncStorage.removeItem('users');
+        // await AsyncStorage.removeItem('authenticated');
+        // await AsyncStorage.removeItem('Authenticated');
+    
+        const userRes = await AsyncStorage.getItem('users')|| JSON.stringify([]);
+            const users = JSON.parse(userRes);
+            console.log(users)
                         
         this.setAuthenticating(true);
 
         const auth=await AsyncStorage.getItem('authenticated')
 
-        // console.log(auth);
+        console.log(auth);
 
         if (!auth){
-            this.setAuthenticated(true) //set for designing home screen
+            this.setAuthenticated(false) //set for designing home screen
         }
         else {
             this.setAuthenticated(true);
@@ -38,14 +45,14 @@ class AuthProvider extends React.Component{
 
     SigninUser = async (email, password) => {
         try {
-            const userRes = await AsyncStorage.getItem('users')|| JSON.stringify([]);
+            const userRes = await AsyncStorage.getItem('users')|| JSON.stringify({});
             const users = JSON.parse(userRes);
             console.log(users)
             
 
             if (users.email ===email && users.password ===password) {
+                await AsyncStorage.setItem('authenticated', JSON.stringify(users));
                 this.setAuthenticated(true);
-                await AsyncStorage.setItem('Authenticated', JSON.stringify(users));
             } else {
                 this.setAuthenticated(false);
                 this.setAuthError(true);

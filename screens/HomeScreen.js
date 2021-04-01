@@ -1,11 +1,21 @@
 import React from 'react';
-import {View, Text, StyleSheet, Image, TextInput, Modal} from 'react-native';
+import {View, Text, StyleSheet, Image, TextInput, StatusBar, Modal} from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import Entypo from 'react-native-vector-icons/Entypo';
+import AddPosts from '../components/AddPosts';
+
 
 
 
 const HomeScreen = ({navigation}) => {
+    const [isOpen, setIsOpen] = React.useState(false);
+    // const handleSubmit = (data) => {
+        
+    //     setIsOpen(false)
+    //   }
+
     return <View style={styles.screen}>
+        <StatusBar backgroundColor="#009387" barStyle='light-content' />
         <View style={styles.body}>
             <View style={{ width: '50%' }}>
                 <View style={styles.v1}>
@@ -22,10 +32,14 @@ const HomeScreen = ({navigation}) => {
                     }} />
                 </View>
             </View>
+
         </View>
         <View style={styles.FloatingActionButton}>
-            <Fontisto name="plus-a" onPress={() =>navigation.navigate('AddProducts')} size={20} color='white' />
+            <Fontisto name="plus-a" onPress={() =>setIsOpen(true)} size={20} color='white' />
         </View>
+        <Modal visible={isOpen} statusBarTranslucent >
+            <AddPosts cancel={()=> setIsOpen(false)}/>
+      </Modal>
        
     </View>
 }
@@ -88,24 +102,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    form: {
-        padding: 30,
-        backgroundColor: '#009387'
-    },
-    formHeader: {
-        alignItems: 'flex-end',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-    },
-    textContainer: {
-        flex: 1,
-        alignContent: 'center',
-    },
-    text: {
-        fontWeight: 'bold',
-        fontSize: 24,
-        textAlign: 'center'
-    }
+    
 
 })
 export default HomeScreen;

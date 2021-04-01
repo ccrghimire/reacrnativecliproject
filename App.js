@@ -2,7 +2,7 @@ import React from 'react';
 import {Provider as PaperProvider} from 'react-native-paper';
 import 'react-native-gesture-handler';
 import {NavigationContainer} from '@react-navigation/native';
-import MainNavigation from './navigations/MainNavigation';
+import MainTabNavigator from './navigations/MainNavigation';
 import AuthNavigation from './navigations/AuthNavigation';
 import AuthProvider from './store/provider/AuthProvider';
 import AuthContext from './store/contexts/AuthContext';
@@ -21,7 +21,7 @@ const App=()=>{
                return <SplashScreen/>
              }
              else
-             return !context.isAuthenticated ? <AuthNavigation/> : <MainNavigation/>
+             return !context.isAuthenticated ? <AuthNavigation/> : <MainTabNavigator/>
            }
          }
        </AuthContext.Consumer>

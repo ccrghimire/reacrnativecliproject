@@ -78,7 +78,7 @@ const SigninScreen = props => {
                 colors={['#08d4c4','#01ab9d']}
                 title="sign In"
                 type="Solid"
-                onpress={()=>authContext.SigninUser(email, password)}/>
+                onPress={()=>authContext.SigninUser(data.email, data.password)}/>
                 </View>
                 <View style={{marginTop:30}}>
             <Button style={styles.button}

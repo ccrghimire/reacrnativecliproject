@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import Entypo from 'react-native-vector-icons/Entypo';
 
 const AddPosts =props=>{
 return <View style={styles.form}>

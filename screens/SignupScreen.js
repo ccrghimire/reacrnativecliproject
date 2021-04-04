@@ -97,7 +97,7 @@ const SignupScreen = props => {
     const authContext= useContext(AuthContext);
 
     const handleSignup =()=>{
-        authContext.SignupUser(data)
+        authContext.SignupUserFirebase(data)
         props.navigation.navigate('Signin')
     }
 

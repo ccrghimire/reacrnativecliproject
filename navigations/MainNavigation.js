@@ -4,10 +4,11 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/HomeScreen';
 import TodosScreen from '../screens/TodosScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import MypostScreen from '../screens/MypostScreen';
 import AddPostsScreen from '../screens/AddPostsScreen';
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import SimpleLineIcons from "react-native-vector-icons/SimpleLineIcons";
-
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 const MainTab=createBottomTabNavigator();
 const HomeStack=createStackNavigator();
 const TodosStack=createStackNavigator();
@@ -58,6 +59,15 @@ const MainTabNavigator =()=>{
             return <MaterialIcons name='person' size={30} />
         }
         }}/>
-    </MainTab.Navigator>
+   
+    <MainTab.Screen name='MyPost' component={MypostScreen} options= {{
+        tabBarIcon: ({focused, color, size})=>{
+         if (focused) {
+             return  <MaterialCommunityIcons name='post' size={30} color='#009387'  />
+         }
+         return <MaterialCommunityIcons name='post' size={25} />
+     }
+     }}/>
+ </MainTab.Navigator>
 }
 export default MainTabNavigator;
